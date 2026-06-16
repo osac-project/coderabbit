@@ -7,7 +7,7 @@
 #
 #
 language: "en-US"
-tone_instructions: "Security-focused. State risk severity and impact."
+tone_instructions: "Focus on: correctness (spec, edge cases, tests); readability (names, logic, organization); architecture (patterns, boundaries, abstraction); security (validation, secrets, auth); performance (N+1, unbounded work). Be direct and concise."
 
 reviews:
   profile: "assertive"
