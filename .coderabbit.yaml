@@ -348,7 +348,7 @@ reviews:
         instructions: |
           Flag MD5, SHA1, DES, RC4, 3DES, Blowfish, ECB mode usage.
           Flag custom crypto implementations. Flag non-constant-time
-          comparison of secrets or tokens.
+          comparison of secrets or tokens. Do NOT flag RSA 2048.
         mode: "error"
 
       - name: "no-injection-vectors"
