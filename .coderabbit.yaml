@@ -26,6 +26,9 @@ reviews:
     # package-lock.json, Cargo.lock) are deliberately kept so the supply-chain
     # path_instructions block fires on them.
     - "!yarn.lock"
+    # Keycloak realm exports: config data with dev client secrets and
+    # RFC 6238 TOTP defaults, not reviewable code.
+    - "!**/realm.json"
 
   auto_review:
     enabled: true
@@ -342,13 +345,23 @@ reviews:
           keys, credentials. Also flag base64 strings >32 chars in config,
           URLs with embedded credentials, variables named api_key/secret/
           token/password assigned string literals.
+
+          EXCEPTION: Do NOT flag default admin/admin credentials in
+          developer setup or maintenance scripts (e.g., Keycloak token
+          requests with username=admin, password=admin). These are
+          standard defaults for local development environments.
         mode: "error"
 
       - name: "no-weak-crypto"
         instructions: |
           Flag MD5, SHA1, DES, RC4, 3DES, Blowfish, ECB mode usage.
           Flag custom crypto implementations. Flag non-constant-time
-          comparison of secrets or tokens. Do NOT flag RSA 2048.
+          comparison of secrets or tokens.
+
+          EXCEPTION: Do NOT flag RSA 2048. Do NOT flag md5sum or
+          sha1sum when used for non-cryptographic purposes (file change
+          detection, checksums, cache keys). Do NOT flag HmacSHA1 for
+          TOTP/OTP configuration (RFC 6238 default algorithm).
         mode: "error"
 
       - name: "no-injection-vectors"
@@ -357,6 +370,10 @@ reviews:
           eval/exec on untrusted data, pickle.loads on untrusted input,
           yaml.load without SafeLoader, os.system with variables,
           dangerouslySetInnerHTML with user data.
+
+          EXCEPTION: Do NOT flag jq filter string interpolation when
+          the variable originates from a prior jq extraction on the
+          same local file, not from user input.
         mode: "error"
 
       - name: "container-privileges"
