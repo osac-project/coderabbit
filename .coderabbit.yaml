@@ -10,7 +10,7 @@ language: "en-US"
 tone_instructions: "Focus on: correctness (spec, edge cases, tests); readability (names, logic, organization); architecture (patterns, boundaries, abstraction); security (validation, secrets, auth); performance (N+1, unbounded work). Be direct and concise."
 
 reviews:
-  profile: "assertive"
+  profile: "chill"
   request_changes_workflow: true
   high_level_summary: true
   collapse_walkthrough: false
