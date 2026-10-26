@@ -64,7 +64,13 @@ reviews:
         Eligible file categories:
         - Documentation (*.md, docs/**) excluding review-policy files
           (AGENTS.md, CLAUDE.md, CONTRIBUTING.md — these govern review
-          behavior and are not trivial)
+          behavior and are not trivial) and substantive PRDs or design
+          documents in osac-project/enhancement-proposals. A change there is
+          substantive when it adds, removes, or changes product requirements,
+          scope, user stories, acceptance criteria, interfaces, architecture,
+          security, compatibility, risks, dependencies, or design decisions.
+          Typo, formatting, link, and other meaning-preserving corrections
+          remain eligible for Ship.
         - CI configuration — comment and formatting changes only to
           existing files under .github/workflows/** and
           .github/actions/** (any semantic change — including run,
@@ -119,6 +125,8 @@ reviews:
            - Review-policy files (AGENTS.md, CLAUDE.md,
              CONTRIBUTING.md)
            - Hand-edited generated files
+           - PRDs or design documents in
+             osac-project/enhancement-proposals
 
         Typical Show changes: test additions or fixes, CLI help text,
         logging improvements, Helm chart doc annotations, single-
@@ -145,6 +153,15 @@ reviews:
         - The change modifies .coderabbit.yaml (review policy)
         - The change modifies review-policy files (AGENTS.md,
           CLAUDE.md, CONTRIBUTING.md)
+        - In osac-project/enhancement-proposals, the change
+          adds, removes, or changes a PRD or design document's product
+          requirements, scope, user stories, acceptance criteria, interfaces,
+          architecture, security, compatibility, risks, dependencies, or
+          design decisions. These documents require human review because
+          approving them establishes product or architecture direction, even
+          though the diff itself has no immediate runtime impact. Typo,
+          formatting, link, and other meaning-preserving corrections are not
+          substantive.
         - The change hand-edits generated files rather than pure
           regeneration
         - You are uncertain about the appropriate risk level
