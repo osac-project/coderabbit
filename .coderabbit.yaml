@@ -537,6 +537,7 @@ reviews:
           Flag logging that may expose passwords, tokens, API keys,
           PII (email, SSN, credit card), session IDs, internal
           hostnames, or customer data.
+          Allow non-sensitive system IDs and resource names.
         mode: "error"
 
       - name: "ai-attribution"
